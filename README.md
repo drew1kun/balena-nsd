@@ -58,14 +58,94 @@ higher priority then docker-compose.yml) or to the `Device Service Variables` (w
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| **NSD_CFG** | base64 encoded contents of `/etc/nsd/nsd.conf` file |
-| **NSD_ZONE** | zone filename (e.g.: `domain.tld`) - will be created in `/zone` dir within container |
-| **NSD_ZONE_CFG** | base64 encoded contents of `/zone/${NSD_ZONE}.zone` file (see [here][nsd-dnssec-link]) |
-| **NSD_REV_ZONE** | reverse zone filename file (e.g.: `2.168.192.in-addr.arpa`) - will be created in `/zone` dir within container |
-| **NSD_REV_ZONE_CFG** | base64 encoded contents of reverse zone `/zone/${NSD_REV_ZONE}.zone` file |
+| **NSD_CFG** | base64 encoded contents of `/etc/nsd/nsd.conf` file | c2VydmVyOgogIHNlcnZlci1jb3VudDogMQogIGlwNC1vbmx5OiB5ZXMKICBoaWRlLXZlcnNpb246IHllcwogIGlkZW50aXR5OiAiIgogIHpvbmVzZGlyOiAiL3pvbmVzIgoKcmVtb3RlLWNvbnRyb2w6CiAgY29udHJvbC1lbmFibGU6IHllcwoKem9uZToKICBuYW1lOiAiTlNEX1pPTkUiCiAgem9uZWZpbGU6ICJOU0RfWk9ORS56b25lIgoKem9uZToKICBuYW1lOiAiTlNEX1JFVl9aT05FIgogIHpvbmVmaWxlOiAiTlNEX1JFVl9aT05FLnpvbmUiCga== |
+| **NSD_ZONE** | zone filename - will be created in `/zone` dir within container | `domain.tld` |
+| **NSD_ZONE_CFG** | base64 encoded contents of `/zone/${NSD_ZONE}.zone` file (see [here][nsd-dnssec-link]) | JE9SSUdJTiBkb21haW4udGxkLgokVFRMIDcyMDAKCjsgU09BCgpAICAgICAgIElOICAgICAgU09BICAgIG5zMS5kb21haW4udGxkLiBob3N0bWFzdGVyLmRvbWFpbi50bGQuICgKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDIwMTYwMjAyMDIgOyBTZXJpYWwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDcyMDAgICAgICAgOyBSZWZyZXNoCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAxODAwICAgICAgIDsgUmV0cnkKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDEyMDk2MDAgICAgOyBFeHBpcmUKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDg2NDAwICkgICAgOyBNaW5pbXVtCgo7IE5BTUVTRVJWRVJTCgpAICAgICAgICAgICAgICAgICAgIElOICAgICAgICAgICAgICAgIE5TICAgICAgICAgICAgICAgICAgIG5zMS5kb21haW4udGxkLgpAICAgICAgICAgICAgICAgICAgIElOICAgICAgICAgICAgICAgIE5TICAgICAgICAgICAgICAgICAgIG5zMi5kb21haW4udGxkLgpAICAgICAgICAgICAgICAgICAgIElOICAgICAgICAgICAgICAgIE5TICAgICAgICAgICAgICAgICAgIG5zMy5kb21haW4udGxkLgoKOyBBIFJFQ09SRFMKCm5zMSAgICAgICAgICAgICAgICAgSU4gICAgICAgICAgICAgICAgQSAgICAgICAgICAgICAgICAgICAgMTkyLjE2OC4yLjEKbnMyICAgICAgICAgICAgICAgICBJTiAgICAgICAgICAgICAgICBBICAgICAgICAgICAgICAgICAgICAxOTIuMTY4LjIuMgpuczIgICAgICAgICAgICAgICAgIElOICAgICAgICAgICAgICAgIEEgICAgICAgICAgICAgICAgICAgIDE5Mi4xNjguMi4zCm5hcyAgICAgICAgICAgICAgICAgSU4gICAgICAgICAgICAgICAgQSAgICAgICAgICAgICAgICAgICAgMTkyLjE2OC4yLjQKcm91dGVyICAgICAgICAgICAgICBJTiAgICAgICAgICAgICAgICBBICAgICAgICAgICAgICAgICAgICAxOTIuMTY4LjIuMjU0Cgo7IENOQU1FIFJFQ09SRFMKCmdhdGV3YXkgICAgICAgICAgICAgICAgIElOICAgICAgICAgICAgICAgIENOQU1FICAgICAgICAgICAgICAgIHJvdXRlcgo= |
+| **NSD_REV_ZONE** | reverse zone filename file - will be created in `/zone` dir within container | `2.168.192.in-addr.arpa` |
+| **NSD_REV_ZONE_CFG** | base64 encoded contents of reverse zone `/zone/${NSD_REV_ZONE}.zone` file | O3pvbmUgZmlsZSBmb3IgMTkyLjE2OC4yLjAvMjQgLS0gZG9tYWluLnRsZCByZXZlcnNlIGxvb2t1cAokVFRMIDEwczsgMTAgc2VjcyBkZWZhdWx0IFRUTCBmb3Igem9uZQoyLjE2OC4xOTIuaW4tYWRkci5hcnBhLiBJTiAgICAgIFNPQSAgICAgbnMxLmRvbWFpbi50bGQuIGhvc3RtYXN0ZXIuZG9tYWluLnRsZC4gKAogICAgICAgICAgICAgICAgICAgICAgICAyMDE2MDMwMTAxICAgIDsgc2VyaWFsIG51bWJlciBvZiBab25lIFJlY29yZAogICAgICAgICAgICAgICAgICAgICAgICAxMjAwcyAgICAgICAgIDsgcmVmcmVzaCB0aW1lCiAgICAgICAgICAgICAgICAgICAgICAgIDE4MHMgICAgICAgICAgOyByZXRyeSB0aW1lIG9uIGZhaWx1cmUKICAgICAgICAgICAgICAgICAgICAgICAgMWQgICAgICAgICAgICA7IGV4cGlyYXRpb24gdGltZQogICAgICAgICAgICAgICAgICAgICAgICAzNjAwICAgICAgICAgIDsgY2FjaGUgdGltZSB0byBsaXZlCiAgICAgICAgICAgICAgICAgICAgICAgICkKCjtOYW1lIHNlcnZlcnMgZm9yIHRoaXMgZG9tYWluCjIuMTY4LjE5Mi5pbi1hZGRyLmFycGEuICAgICAgICAgSU4gICAgICBOUyAgICAgICBkb21haW4udGxkLgoKO0lQIHRvIEhvc3RuYW1lIFBvaW50ZXJzCjEuMi4xNjguMTkyLmluLWFkZHIuYXJwYS4gICAgICAgSU4gICAgICBQVFIgICAgICBuczEuZG9tYWluLnRsZC4KMi4yLjE2OC4xOTIuaW4tYWRkci5hcnBhLiAgICAgICBJTiAgICAgIFBUUiAgICAgIG5zMi5kb21haW4udGxkLgozLjIuMTY4LjE5Mi5pbi1hZGRyLmFycGEuICAgICAgIElOICAgICAgUFRSICAgICAgbnMzLmRvbWFpbi50bGQuCjQuMi4xNjguMTkyLmluLWFkZHIuYXJwYS4gICAgICAgSU4gICAgICBQVFIgICAgICBuYXMuZG9tYWluLnRsZC4KMjU0LjIuMTY4LjE5Mi5pbi1hZGRyLmFycGEuICAgICBJTiAgICAgIFBUUiAgICAgIHJvdHVlci5kb21haW4udGxkLgo= |
 
 These variables are hardcoded in nsd/run.sh docker container's entrypoint shell script.
 Therefore, feel free to modify it's content as you wish, adding more zones (and the corresponding Environment Variables)
+
+Default base64 encoded /etc/nsd/nsd.conf:
+
+```yaml
+server:
+  server-count: 1
+  ip4-only: yes
+  hide-version: yes
+  identity: ""
+  zonesdir: "/zones"
+
+remote-control:
+  control-enable: yes
+
+zone:
+  name: "NSD_ZONE"
+  zonefile: "NSD_ZONE.zone"
+
+zone:
+  name: "NSD_REV_ZONE"
+  zonefile: "NSD_REV_ZONE.zone"
+```
+
+Default base64 encoded forward zone (NSD_ZONE_CFG):
+```
+$ORIGIN domain.tld.
+$TTL 7200
+
+; SOA
+
+@       IN      SOA    ns1.domain.tld. hostmaster.domain.tld. (
+                                        2016020202 ; Serial
+                                        7200       ; Refresh
+                                        1800       ; Retry
+                                        1209600    ; Expire
+                                        86400 )    ; Minimum
+
+; NAMESERVERS
+
+@                   IN                NS                   ns1.domain.tld.
+@                   IN                NS                   ns2.domain.tld.
+@                   IN                NS                   ns3.domain.tld.
+
+; A RECORDS
+
+ns1                 IN                A                    192.168.2.1
+ns2                 IN                A                    192.168.2.2
+ns2                 IN                A                    192.168.2.3
+nas                 IN                A                    192.168.2.4
+router              IN                A                    192.168.2.254
+
+; CNAME RECORDS
+
+gateway                 IN                CNAME                router
+
+```
+
+Default base64 encoded reverse zone (NSD_REV_ZONE_CFG):
+
+```
+;zone file for 192.168.2.0/24 -- domain.tld reverse lookup
+$TTL 10s; 10 secs default TTL for zone
+2.168.192.in-addr.arpa. IN      SOA     ns1.domain.tld. hostmaster.domain.tld. (
+                        2016030101    ; serial number of Zone Record
+                        1200s         ; refresh time
+                        180s          ; retry time on failure
+                        1d            ; expiration time
+                        3600          ; cache time to live
+                        )
+
+;Name servers for this domain
+2.168.192.in-addr.arpa.         IN      NS       domain.tld.
+
+;IP to Hostname Pointers
+1.2.168.192.in-addr.arpa.       IN      PTR      ns1.domain.tld.
+2.2.168.192.in-addr.arpa.       IN      PTR      ns2.domain.tld.
+3.2.168.192.in-addr.arpa.       IN      PTR      ns3.domain.tld.
+4.2.168.192.in-addr.arpa.       IN      PTR      nas.domain.tld.
+254.2.168.192.in-addr.arpa.     IN      PTR      rotuer.domain.tld.
+```
 
 In order to create the content of these entries, take your nsd.conf and zonefiles (see the examples [here][nsd-dnssec-link],
 and encode them into base64 for instance with the following command:
