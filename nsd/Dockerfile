@@ -1,14 +1,12 @@
 FROM offtechnologies/docker-arm32v6-base-image-alpine-qemu:latest
 
 ARG NSD_VERSION=4.2.1
-#ARG NSD_VERSION=4.1.17
 
 # https://pgp.mit.edu/pks/lookup?search=0x7E045F8D&fingerprint=on&op=index
 # pub  4096R/7E045F8D 2011-04-21 W.C.A. Wijngaards <wouter@nlnetlabs.nl>
 ARG GPG_SHORTID="0x7E045F8D"
 ARG GPG_FINGERPRINT="EDFA A3F2 CA4E 6EB0 5681  AF8E 9F6F 1C2D 7E04 5F8D"
 ARG SHA256_HASH="d17c0ea3968cb0eb2be79f2f83eb299b7bfcc554b784007616eed6ece828871f"
-#ARG SHA256_HASH="107fa506d18ed6fd0a922d1b96774afd9270ec38ec6b17cd7c46fb9433a03a6c"
 
 ENV UID=991 GID=991
 

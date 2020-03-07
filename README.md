@@ -3,16 +3,14 @@ Balena NSD
 
 [![MIT licensed][mit-badge]][mit-link]
 
-
 Run an authoritative DNS server on Raspberry pi zero/one (or other devices with arm32v6 cpu architecture)
 
 Inspired by:
 ------------
 
-[balena-pihole][balena-pihole-link]
-[hardware/nsd-dnssec][nsd-dnssec-link]
-[offtechnologies/docker-arm32v6-nsd][docker-arm32v6-nsd-link]
-
+ - [balena-pihole][balena-pihole-link]
+ - [hardware/nsd-dnssec][nsd-dnssec-link]
+ - [offtechnologies/docker-arm32v6-nsd][docker-arm32v6-nsd-link]
 
 What is this?
 -------------
@@ -20,7 +18,6 @@ What is this?
 The project is a [balenaCloud][balenacloud-link] stack with the following services:
 
  - [NSD][nsd-link] -  an authoritative only, high performance, simple and open source name server.
-
 
 Installation
 ------------
@@ -39,7 +36,7 @@ Installation
  - Clone this project and go inside it's dir:
 
  ```bash
- git clone
+ git clone git@github.com:drew-kun/balena-nsd.git
  cd balena-nsd
  ```
 - push the project to your device using balena-cli:
