@@ -67,7 +67,7 @@ higher priority then docker-compose.yml) or to the `Device Service Variables` (w
 These variables are hardcoded in nsd/run.sh docker container's entrypoint shell script.
 Therefore, feel free to modify it's content as you wish, adding more zones (and the corresponding Environment Variables)
 
-Default base64 encoded /etc/nsd/nsd.conf:
+Default base64 encoded content of `/etc/nsd/nsd.conf` (**NSD_CFG**):
 
 ```yaml
 server:
@@ -89,7 +89,7 @@ zone:
   zonefile: "NSD_REV_ZONE.zone"
 ```
 
-Default base64 encoded forward zone (NSD_ZONE_CFG):
+Default base64 encoded content of `/zones/domain.tld.zone` forward zone (**NSD_ZONE_CFG**):
 ```
 $ORIGIN domain.tld.
 $TTL 7200
@@ -123,7 +123,7 @@ gateway                 IN                CNAME                router
 
 ```
 
-Default base64 encoded reverse zone (NSD_REV_ZONE_CFG):
+Default base64 encoded content of `/zones/2.168.192.in-addr.arpa.zone` reverse zone (**NSD_REV_ZONE_CFG**):
 
 ```
 ;zone file for 192.168.2.0/24 -- domain.tld reverse lookup
