@@ -90,6 +90,7 @@ zone:
 ```
 
 Default base64 encoded content of `/zones/domain.tld.zone` forward zone (**NSD_ZONE_CFG**):
+
 ```
 $ORIGIN domain.tld.
 $TTL 7200
@@ -120,7 +121,6 @@ router              IN                A                    192.168.2.254
 ; CNAME RECORDS
 
 gateway                 IN                CNAME                router
-
 ```
 
 Default base64 encoded content of `/zones/2.168.192.in-addr.arpa.zone` reverse zone (**NSD_REV_ZONE_CFG**):
