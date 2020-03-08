@@ -147,15 +147,107 @@ $TTL 10s; 10 secs default TTL for zone
 254.2.168.192.in-addr.arpa.     IN      PTR      rotuer.domain.tld.
 ```
 
-In order to create the content of these entries, take your nsd.conf and zonefiles (see the examples [here][nsd-dnssec-link],
-and encode them into base64 for instance with the following command:
+Create DNSSEC configuration
+------------------------
+
+In order to create the base64 content of **_CFG** variables, first create your zones config files (see the examples [here][nsd-dnssec-link].
+
+Encode them, for instance, with the following command:
 
 ```bash
-base64 nsd.conf
 base64 domain.tld.zone
 base64 2.168.192.in-addr.arpa.zone
-
 ```
+NOTE: at least when doing it on mac, make sure your files have an empty line at the end, otherwise base64 encoded files appear broken in the container.
+
+Put them into corresponding Environment Variables **NSD_ZONE_CFG** and **NSD_REV_ZONE_CFG** in your BalenCloud account (under `Device Variables` or `Device Service Variables`)
+
+Go the nsd container:
+
+```bash
+#balena ssh <IP_ADDRESS_OF_DEVICE> <CONTAINER_NAME>
+balena ssh 192.168.2.3 nsd
+```
+Or just use BalenaCloud UI for that...
+
+Check the zone configuration files syntax (just a good practice):
+
+```bash
+cd /zones/
+
+# nsd-checkzone <ZONE> <ZONE_FILE>
+nsd-checkzone domain.tld ./domain.tld.zone
+zone domain.tld is ok
+
+nsd-checkzone 2.168.192.in-addr.arpa 2.168.192.in-addr.arpa.zone
+zone 2.168.192.in-addr.arpa is ok
+```
+
+To use dnssec, generate ZSK and KSK keys for your domain:
+
+```bash
+#keygen <DOMAIN>
+keygen domain.tld
+```
+
+This will generate key files in the /zones/ volume directory.
+Then sign your dns zone (default expiration date is 1 month):
+
+```bash
+# signzone <DOMAIN>
+signzone domain.tld
+
+Signing zone for domain.tld
+NSD configuration rebuild... reconfig start, read /etc/nsd/nsd.conf
+ok
+Reloading zone for domain.tld... ok
+Notify slave servers... ok
+Done.
+
+# or set custom RRSIG RR expiration date :
+signzone domain.tld [YYYYMMDDhhmmss]
+signzone domain.tld 20170205220210
+```
+As a result new `.zone.signed` files will be created in the `/zones/` volume.
+
+Modify your /etc/nsd/nsd.conf by changing zonefiles to newly created `*.zone.signed` files:
+
+```yaml
+zone:
+  name: "domain.tld"
+  zonefile: "domain.tld.zone.signed"
+
+zone:
+  name: "2.168.192.in-addr.arpa"
+  zonefile: "2.168.192.in-addr.arpa.zone.signed"
+```
+
+Finally, convert your recently changed `/etc/nsd/nsd.conf` to base64 and put to your BalenCloud account (under `Device Variables` or `Device Service Variables`)
+
+Check your DNSSEC configuration
+-------------------------------
+
+To show your DS-Records (Delegation Signer), within container do:
+
+```bash
+ds-records domain.tld
+
+> DS record 1 [Digest Type = SHA1] :
+domain.tld. 600 IN DS xxxx 14 1 xxxxxxxxxxxxxx
+
+> DS record 2 [Digest Type = SHA256] :
+domain.tld. 600 IN DS xxxx 14 2 xxxxxxxxxxxxxx
+
+> Public KSK Key :
+domain.tld. IN DNSKEY 257 3 14 xxxxxxxxxxxxxx ; {id = xxxx (ksk), size = 384b}
+```
+
+Update your zonefiles
+---------------------
+
+- Update **NSD_ZONE_CFG** and/or **NSD_REV_ZONE_CFG**
+- Go inside the container, remove old `*.zone.signed` files and sign new zones
+- Restart the service
 
 License
 -------
