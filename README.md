@@ -264,6 +264,8 @@ Then check the journald:
 journalctl --no-pager -u resin-supervisor
 ```
 
+Usually you just have to modify your docker-compose making sure you use the correct device IP in the `port:` statement.
+
 License
 -------
 
