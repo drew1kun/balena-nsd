@@ -166,7 +166,7 @@ Go the nsd container:
 
 ```bash
 #balena ssh <IP_ADDRESS_OF_DEVICE> <CONTAINER_NAME>
-balena ssh 192.168.2.3 nsd
+balena ssh 192.168.2.5 nsd
 ```
 Or just use BalenaCloud UI for that...
 
