@@ -33,12 +33,25 @@ Installation
  ```bash
  balena login
  ```
+
  - Clone this project and go inside it's dir:
 
  ```bash
  git clone git@github.com:drew-kun/balena-nsd.git
  cd balena-nsd
  ```
+
+- specify the correct IP address of your device in `docker-compose.yml` file `ports:` statement:
+
+```yaml
+...
+services:
+  ports:
+  - '<YOUR_DEVICE_IP>:53:53'
+  - '<YOUR_DEVICE_IP>:53:53/udp'
+...
+```
+
 - push the project to your device using balena-cli:
 
  ```bash
