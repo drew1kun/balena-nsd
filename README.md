@@ -249,6 +249,21 @@ Update your zonefiles
 - Go inside the container, remove old `*.zone.signed` files and sign new zones
 - Restart the service
 
+Troubleshooting
+---------------
+
+If your device starts but the container wouldn't, it is a good idea to ssh into balena OS:
+
+```bash
+balena ssh 192.168.2.5
+```
+
+Then check the journald:
+
+```bash
+journalctl --no-pager -u resin-supervisor
+```
+
 License
 -------
 
