@@ -71,16 +71,16 @@ higher priority then docker-compose.yml) or to the `Device Service Variables` (w
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| **NSD_CFG** | base64 encoded contents of `/etc/nsd/nsd.conf` file | c2VydmVyOgogIHNlcnZlci1jb3VudDogMQogIGlwNC1vbmx5OiB5ZXMKICBoaWRlLXZlcnNpb246IHllcwogIGlkZW50aXR5OiAiIgogIHpvbmVzZGlyOiAiL3pvbmVzIgoKcmVtb3RlLWNvbnRyb2w6CiAgY29udHJvbC1lbmFibGU6IHllcwoKem9uZToKICBuYW1lOiAiTlNEX1pPTkUiCiAgem9uZWZpbGU6ICJOU0RfWk9ORS56b25lIgoKem9uZToKICBuYW1lOiAiTlNEX1JFVl9aT05FIgogIHpvbmVmaWxlOiAiTlNEX1JFVl9aT05FLnpvbmUiCga== |
+| **NSD_BASE64_CFG** | base64 encoded contents of `/etc/nsd/nsd.conf` file | c2VydmVyOgogIHNlcnZlci1jb3VudDogMQogIGlwNC1vbmx5OiB5ZXMKICBoaWRlLXZlcnNpb246IHllcwogIGlkZW50aXR5OiAiIgogIHpvbmVzZGlyOiAiL3pvbmVzIgoKcmVtb3RlLWNvbnRyb2w6CiAgY29udHJvbC1lbmFibGU6IHllcwoKem9uZToKICBuYW1lOiAiTlNEX1pPTkUiCiAgem9uZWZpbGU6ICJOU0RfWk9ORS56b25lIgoKem9uZToKICBuYW1lOiAiTlNEX1JFVl9aT05FIgogIHpvbmVmaWxlOiAiTlNEX1JFVl9aT05FLnpvbmUiCga== |
 | **NSD_ZONE** | zone filename - will be created in `/zone` dir within container | `domain.tld` |
-| **NSD_ZONE_CFG** | base64 encoded contents of `/zone/${NSD_ZONE}.zone` file (see [here][nsd-dnssec-link]) | JE9SSUdJTiBkb21haW4udGxkLgokVFRMIDcyMDAKCjsgU09BCgpAICAgICAgIElOICAgICAgU09BICAgIG5zMS5kb21haW4udGxkLiBob3N0bWFzdGVyLmRvbWFpbi50bGQuICgKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDIwMTYwMjAyMDIgOyBTZXJpYWwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDcyMDAgICAgICAgOyBSZWZyZXNoCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAxODAwICAgICAgIDsgUmV0cnkKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDEyMDk2MDAgICAgOyBFeHBpcmUKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDg2NDAwICkgICAgOyBNaW5pbXVtCgo7IE5BTUVTRVJWRVJTCgpAICAgICAgICAgICAgICAgICAgIElOICAgICAgICAgICAgICAgIE5TICAgICAgICAgICAgICAgICAgIG5zMS5kb21haW4udGxkLgpAICAgICAgICAgICAgICAgICAgIElOICAgICAgICAgICAgICAgIE5TICAgICAgICAgICAgICAgICAgIG5zMi5kb21haW4udGxkLgpAICAgICAgICAgICAgICAgICAgIElOICAgICAgICAgICAgICAgIE5TICAgICAgICAgICAgICAgICAgIG5zMy5kb21haW4udGxkLgoKOyBBIFJFQ09SRFMKCm5zMSAgICAgICAgICAgICAgICAgSU4gICAgICAgICAgICAgICAgQSAgICAgICAgICAgICAgICAgICAgMTkyLjE2OC4yLjEKbnMyICAgICAgICAgICAgICAgICBJTiAgICAgICAgICAgICAgICBBICAgICAgICAgICAgICAgICAgICAxOTIuMTY4LjIuMgpuczIgICAgICAgICAgICAgICAgIElOICAgICAgICAgICAgICAgIEEgICAgICAgICAgICAgICAgICAgIDE5Mi4xNjguMi4zCm5hcyAgICAgICAgICAgICAgICAgSU4gICAgICAgICAgICAgICAgQSAgICAgICAgICAgICAgICAgICAgMTkyLjE2OC4yLjQKcm91dGVyICAgICAgICAgICAgICBJTiAgICAgICAgICAgICAgICBBICAgICAgICAgICAgICAgICAgICAxOTIuMTY4LjIuMjU0Cgo7IENOQU1FIFJFQ09SRFMKCmdhdGV3YXkgICAgICAgICAgICAgICAgIElOICAgICAgICAgICAgICAgIENOQU1FICAgICAgICAgICAgICAgIHJvdXRlcgo= |
+| **NSD_BASE64_ZONE_CFG** | base64 encoded contents of `/zone/${NSD_ZONE}.zone` file (see [here][nsd-dnssec-link]) | JE9SSUdJTiBkb21haW4udGxkLgokVFRMIDcyMDAKCjsgU09BCgpAICAgICAgIElOICAgICAgU09BICAgIG5zMS5kb21haW4udGxkLiBob3N0bWFzdGVyLmRvbWFpbi50bGQuICgKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDIwMTYwMjAyMDIgOyBTZXJpYWwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDcyMDAgICAgICAgOyBSZWZyZXNoCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAxODAwICAgICAgIDsgUmV0cnkKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDEyMDk2MDAgICAgOyBFeHBpcmUKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDg2NDAwICkgICAgOyBNaW5pbXVtCgo7IE5BTUVTRVJWRVJTCgpAICAgICAgICAgICAgICAgICAgIElOICAgICAgICAgICAgICAgIE5TICAgICAgICAgICAgICAgICAgIG5zMS5kb21haW4udGxkLgpAICAgICAgICAgICAgICAgICAgIElOICAgICAgICAgICAgICAgIE5TICAgICAgICAgICAgICAgICAgIG5zMi5kb21haW4udGxkLgpAICAgICAgICAgICAgICAgICAgIElOICAgICAgICAgICAgICAgIE5TICAgICAgICAgICAgICAgICAgIG5zMy5kb21haW4udGxkLgoKOyBBIFJFQ09SRFMKCm5zMSAgICAgICAgICAgICAgICAgSU4gICAgICAgICAgICAgICAgQSAgICAgICAgICAgICAgICAgICAgMTkyLjE2OC4yLjEKbnMyICAgICAgICAgICAgICAgICBJTiAgICAgICAgICAgICAgICBBICAgICAgICAgICAgICAgICAgICAxOTIuMTY4LjIuMgpuczIgICAgICAgICAgICAgICAgIElOICAgICAgICAgICAgICAgIEEgICAgICAgICAgICAgICAgICAgIDE5Mi4xNjguMi4zCm5hcyAgICAgICAgICAgICAgICAgSU4gICAgICAgICAgICAgICAgQSAgICAgICAgICAgICAgICAgICAgMTkyLjE2OC4yLjQKcm91dGVyICAgICAgICAgICAgICBJTiAgICAgICAgICAgICAgICBBICAgICAgICAgICAgICAgICAgICAxOTIuMTY4LjIuMjU0Cgo7IENOQU1FIFJFQ09SRFMKCmdhdGV3YXkgICAgICAgICAgICAgICAgIElOICAgICAgICAgICAgICAgIENOQU1FICAgICAgICAgICAgICAgIHJvdXRlcgo= |
 | **NSD_REV_ZONE** | reverse zone filename file - will be created in `/zone` dir within container | `2.168.192.in-addr.arpa` |
-| **NSD_REV_ZONE_CFG** | base64 encoded contents of reverse zone `/zone/${NSD_REV_ZONE}.zone` file | O3pvbmUgZmlsZSBmb3IgMTkyLjE2OC4yLjAvMjQgLS0gZG9tYWluLnRsZCByZXZlcnNlIGxvb2t1cAokVFRMIDEwczsgMTAgc2VjcyBkZWZhdWx0IFRUTCBmb3Igem9uZQoyLjE2OC4xOTIuaW4tYWRkci5hcnBhLiBJTiAgICAgIFNPQSAgICAgbnMxLmRvbWFpbi50bGQuIGhvc3RtYXN0ZXIuZG9tYWluLnRsZC4gKAogICAgICAgICAgICAgICAgICAgICAgICAyMDE2MDMwMTAxICAgIDsgc2VyaWFsIG51bWJlciBvZiBab25lIFJlY29yZAogICAgICAgICAgICAgICAgICAgICAgICAxMjAwcyAgICAgICAgIDsgcmVmcmVzaCB0aW1lCiAgICAgICAgICAgICAgICAgICAgICAgIDE4MHMgICAgICAgICAgOyByZXRyeSB0aW1lIG9uIGZhaWx1cmUKICAgICAgICAgICAgICAgICAgICAgICAgMWQgICAgICAgICAgICA7IGV4cGlyYXRpb24gdGltZQogICAgICAgICAgICAgICAgICAgICAgICAzNjAwICAgICAgICAgIDsgY2FjaGUgdGltZSB0byBsaXZlCiAgICAgICAgICAgICAgICAgICAgICAgICkKCjtOYW1lIHNlcnZlcnMgZm9yIHRoaXMgZG9tYWluCjIuMTY4LjE5Mi5pbi1hZGRyLmFycGEuICAgICAgICAgSU4gICAgICBOUyAgICAgICBkb21haW4udGxkLgoKO0lQIHRvIEhvc3RuYW1lIFBvaW50ZXJzCjEuMi4xNjguMTkyLmluLWFkZHIuYXJwYS4gICAgICAgSU4gICAgICBQVFIgICAgICBuczEuZG9tYWluLnRsZC4KMi4yLjE2OC4xOTIuaW4tYWRkci5hcnBhLiAgICAgICBJTiAgICAgIFBUUiAgICAgIG5zMi5kb21haW4udGxkLgozLjIuMTY4LjE5Mi5pbi1hZGRyLmFycGEuICAgICAgIElOICAgICAgUFRSICAgICAgbnMzLmRvbWFpbi50bGQuCjQuMi4xNjguMTkyLmluLWFkZHIuYXJwYS4gICAgICAgSU4gICAgICBQVFIgICAgICBuYXMuZG9tYWluLnRsZC4KMjU0LjIuMTY4LjE5Mi5pbi1hZGRyLmFycGEuICAgICBJTiAgICAgIFBUUiAgICAgIHJvdHVlci5kb21haW4udGxkLgo= |
+| **NSD_BASE64_REV_ZONE_CFG** | base64 encoded contents of reverse zone `/zone/${NSD_REV_ZONE}.zone` file | O3pvbmUgZmlsZSBmb3IgMTkyLjE2OC4yLjAvMjQgLS0gZG9tYWluLnRsZCByZXZlcnNlIGxvb2t1cAokVFRMIDEwczsgMTAgc2VjcyBkZWZhdWx0IFRUTCBmb3Igem9uZQoyLjE2OC4xOTIuaW4tYWRkci5hcnBhLiBJTiAgICAgIFNPQSAgICAgbnMxLmRvbWFpbi50bGQuIGhvc3RtYXN0ZXIuZG9tYWluLnRsZC4gKAogICAgICAgICAgICAgICAgICAgICAgICAyMDE2MDMwMTAxICAgIDsgc2VyaWFsIG51bWJlciBvZiBab25lIFJlY29yZAogICAgICAgICAgICAgICAgICAgICAgICAxMjAwcyAgICAgICAgIDsgcmVmcmVzaCB0aW1lCiAgICAgICAgICAgICAgICAgICAgICAgIDE4MHMgICAgICAgICAgOyByZXRyeSB0aW1lIG9uIGZhaWx1cmUKICAgICAgICAgICAgICAgICAgICAgICAgMWQgICAgICAgICAgICA7IGV4cGlyYXRpb24gdGltZQogICAgICAgICAgICAgICAgICAgICAgICAzNjAwICAgICAgICAgIDsgY2FjaGUgdGltZSB0byBsaXZlCiAgICAgICAgICAgICAgICAgICAgICAgICkKCjtOYW1lIHNlcnZlcnMgZm9yIHRoaXMgZG9tYWluCjIuMTY4LjE5Mi5pbi1hZGRyLmFycGEuICAgICAgICAgSU4gICAgICBOUyAgICAgICBkb21haW4udGxkLgoKO0lQIHRvIEhvc3RuYW1lIFBvaW50ZXJzCjEuMi4xNjguMTkyLmluLWFkZHIuYXJwYS4gICAgICAgSU4gICAgICBQVFIgICAgICBuczEuZG9tYWluLnRsZC4KMi4yLjE2OC4xOTIuaW4tYWRkci5hcnBhLiAgICAgICBJTiAgICAgIFBUUiAgICAgIG5zMi5kb21haW4udGxkLgozLjIuMTY4LjE5Mi5pbi1hZGRyLmFycGEuICAgICAgIElOICAgICAgUFRSICAgICAgbnMzLmRvbWFpbi50bGQuCjQuMi4xNjguMTkyLmluLWFkZHIuYXJwYS4gICAgICAgSU4gICAgICBQVFIgICAgICBuYXMuZG9tYWluLnRsZC4KMjU0LjIuMTY4LjE5Mi5pbi1hZGRyLmFycGEuICAgICBJTiAgICAgIFBUUiAgICAgIHJvdHVlci5kb21haW4udGxkLgo= |
 
 These variables are hardcoded in nsd/run.sh docker container's entrypoint shell script.
 Therefore, feel free to modify it's content as you wish, adding more zones (and the corresponding Environment Variables)
 
-Default base64 encoded content of `/etc/nsd/nsd.conf` (**NSD_CFG**):
+Default base64 encoded content of `/etc/nsd/nsd.conf` (**NSD_BASE64_CFG**):
 
 ```yaml
 server:
@@ -102,7 +102,7 @@ zone:
   zonefile: "NSD_REV_ZONE.zone"
 ```
 
-Default base64 encoded content of `/zones/domain.tld.zone` forward zone (**NSD_ZONE_CFG**):
+Default base64 encoded content of `/zones/domain.tld.zone` forward zone (**NSD_BASE64_ZONE_CFG**):
 
 ```
 $ORIGIN domain.tld.
@@ -127,7 +127,7 @@ $TTL 7200
 
 ns1                 IN                A                    192.168.2.1
 ns2                 IN                A                    192.168.2.2
-ns2                 IN                A                    192.168.2.3
+ns3                 IN                A                    192.168.2.3
 nas                 IN                A                    192.168.2.4
 router              IN                A                    192.168.2.254
 
@@ -136,7 +136,7 @@ router              IN                A                    192.168.2.254
 gateway                 IN                CNAME                router
 ```
 
-Default base64 encoded content of `/zones/2.168.192.in-addr.arpa.zone` reverse zone (**NSD_REV_ZONE_CFG**):
+Default base64 encoded content of `/zones/2.168.192.in-addr.arpa.zone` reverse zone (**NSD_BASE64_REV_ZONE_CFG**):
 
 ```
 ;zone file for 192.168.2.0/24 -- domain.tld reverse lookup
@@ -173,7 +173,7 @@ base64 2.168.192.in-addr.arpa.zone
 ```
 NOTE: at least when doing it on mac, make sure your files have an empty line at the end, otherwise base64 encoded files appear broken in the container.
 
-Put them into corresponding Environment Variables **NSD_ZONE_CFG** and **NSD_REV_ZONE_CFG** in your BalenCloud account (under `Device Variables` or `Device Service Variables`)
+Put them into corresponding Environment Variables **NSD_BASE64_ZONE_CFG** and **NSD_BASE64_REV_ZONE_CFG** in your BalenCloud account (under `Device Variables` or `Device Service Variables`)
 
 Go the nsd container:
 
@@ -258,7 +258,7 @@ domain.tld. IN DNSKEY 257 3 14 xxxxxxxxxxxxxx ; {id = xxxx (ksk), size = 384b}
 Update your zonefiles
 ---------------------
 
-- Update **NSD_ZONE_CFG** and/or **NSD_REV_ZONE_CFG**
+- Update **NSD_BASE64_ZONE_CFG** and/or **NSD_BASE64_REV_ZONE_CFG**
 - Go inside the container, remove old `*.zone.signed` files and sign new zones
 - Restart the service
 
