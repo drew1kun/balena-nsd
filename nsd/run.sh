@@ -8,7 +8,7 @@ sed_path='/bin/sed'
 echo "${NSD_BASE64_CFG}" | base64 -d > "${nsd_cfg}"
 
 # Configure DNS zones:
-for i in 0 1 2 3
+for i in 0 1 2 3 4
 do
     zone="NSD_ZONE_${i}"
     zone_cfg="NSD_BASE64_ZONE_${i}_CFG"
