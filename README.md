@@ -181,7 +181,11 @@ Go the nsd container:
 #balena ssh <IP_ADDRESS_OF_DEVICE> <CONTAINER_NAME>
 balena ssh 192.168.2.5 nsd
 ```
-Or just use BalenaCloud UI for that...
+
+Or just use BalenaCloud UUID for that:
+```bash
+balena ssh <UUID> nsd
+```
 
 Check the zone configuration files syntax (just a good practice):
 
